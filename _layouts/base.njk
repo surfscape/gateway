@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="{{page.lang}}">
+  {% include "head.njk" %}
+  <body id="app">
+    <a href="#main-content" class="acs-skip">Skip to main content</a>
+    {% include "navigation.njk" %}
+    <header class="page-header stack">
+      {% if hero.title %}
+        {% set hero_title = hero.title | safe %}
+      {% endif %}
+      <h1>{{ hero_title or title or meta.title}}</h1>
+      <p class="steel-subtitle">{{hero.description or description or meta.description}}</p>
+    </header>
+    <main>
+      {% block base %}
+        <article id="main-content" class="stack">
+          {{ content | safe }}
+        </article>
+      {% endblock base %}
+    </main>
+    {% include "footer.njk" %}
+  </body>
+</html>

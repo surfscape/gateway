@@ -1,0 +1,202 @@
+{
+    "Windows": [
+        {
+            "name": "Ficheiros temporários",
+            "description": "Faz a limpeza da pasta temporária do Windows.",
+            "action": {
+                "type": "folder-content",
+                "path": "%TEMP%"
+            }
+        },
+        {
+            "name": "Cache de ícones e imagens",
+            "description": "Limpa a cache de ícones e imagens do explorador de ficheiros.",
+            "action": {
+                "type": "content-pattern",
+                "path": "%LOCALAPPDATA%\\Microsoft\\Windows\\Explorer",
+                "patterns": [
+                    "thumbcache_*.db",
+                    "iconcache_*.db"
+                ]
+            },
+            "requiredProcesses": [
+                {
+                    "name": "explorer.exe",
+                    "canTerminate": true
+                }
+            ]
+        },
+        {
+            "name": "Cache do Windows Update",
+            "description": "Limpa a cache de atualizações do Windows.",
+            "action": {
+                "type": "folder-content",
+                "path": "%WINDIR%\\SoftwareDistribution\\Download"
+            }
+        },
+        {
+            "name": "Relatórios de erros e logs do sistema",
+            "description": "Limpa logs de erros e relatórios de diagnóstico do sistema.",
+            "action": {
+                "type": "folder-content",
+                "path": "%ProgramData%\\Microsoft\\Windows\\WER"
+            }
+        },
+        {
+            "name": "Ficheiros de minidump",
+            "description": "Remove ficheiros de crash gerados pelo sistema.",
+            "action": {
+                "type": "folder-content",
+                "path": "%SystemRoot%\\Minidump"
+            }
+        },
+        {
+            "name": "Ficheiros temporários do sistema",
+            "description": "Remove ficheiros temporários da pasta Temp do Windows.",
+            "action": {
+                "type": "folder-content",
+                "path": "%SystemRoot%\\Temp"
+            }
+        },
+        {
+            "name": "Prefetch do Windows",
+            "description": "Limpa os ficheiros de prefetch usados para acelerar o arranque de aplicações.",
+            "action": {
+                "type": "folder-content",
+                "path": "%SystemRoot%\\Prefetch"
+            }
+        },
+        {
+            "name": "Quarentena do Windows Defender",
+            "description": "Remove ficheiros colocados em quarentena pelo Windows Defender.",
+            "action": {
+                "type": "folder-content",
+                "path": "%ProgramData%\\Microsoft\\Windows Defender\\Quarantine"
+            }
+        }
+    ],
+    "Browsers": [
+        {
+            "name": "Cache do Chrome",
+            "description": "Limpa a cache do Google Chrome.",
+            "action": {
+                "type": "folder-content",
+                "path": "%LocalAppData%\\Google\\Chrome\\User Data\\Default\\Cache"
+            },
+            "requiredProcesses": [
+                {
+                    "name": "chrome.exe",
+                    "canTerminate": false
+                }
+            ]
+        },
+        {
+            "name": "Cache do Firefox",
+            "description": "Limpa a cache do Mozilla Firefox.",
+            "action": {
+                "type": "folder-content",
+                "path": "%AppData%\\Mozilla\\Firefox\\Profiles"
+            },
+            "requiredProcesses": [
+                {
+                    "name": "firefox.exe",
+                    "canTerminate": false
+                }
+            ]
+        },
+        {
+            "name": "Cache do Edge",
+            "description": "Limpa a cache do Microsoft Edge.",
+            "action": {
+                "type": "folder-content",
+                "path": "%LocalAppData%\\Microsoft\\Edge\\User Data\\Default\\Cache"
+            },
+            "requiredProcesses": [
+                {
+                    "name": "msedge.exe",
+                    "canTerminate": false
+                }
+            ]
+        },
+        {
+            "name": "Cache do Brave",
+            "description": "Limpa a cache do Brave Browser.",
+            "action": {
+                "type": "folder-content",
+                "path": "%LocalAppData%\\BraveSoftware\\Brave-Browser\\User Data\\Default\\Cache"
+            },
+            "requiredProcesses": [
+                {
+                    "name": "brave.exe",
+                    "canTerminate": false
+                }
+            ]
+        }
+    ],
+    "Office": [
+        {
+            "name": "Ficheiros recentes do Office",
+            "description": "Limpa a lista de documentos recentes do Microsoft Office.",
+            "action": {
+                "type": "folder-content",
+                "path": "%AppData%\\Microsoft\\Office\\Recent"
+            }
+        }
+    ],
+    "Gaming": [
+        {
+            "name": "Cache de downloads da Steam",
+            "description": "Limpa ficheiros temporários de downloads inacabados ou corrompidos da Steam.",
+            "action": {
+                "type": "folder-content",
+                "path": "%ProgramFiles(x86)%\\Steam\\steamapps\\downloading"
+            },
+            "requiredProcesses": [
+                {
+                    "name": "steam.exe",
+                    "canTerminate": false
+                }
+            ]
+        },
+        {
+            "name": "Logs do Riot Client",
+            "description": "Limpa os logs do Riot Client.",
+            "action": {
+                "type": "folder-content",
+                "path": "%LocalAppData%\\Riot Games\\Riot Client\\Logs"
+            }
+        },
+        {
+            "name": "Logs do League of Legends",
+            "description": "Remove logs antigos do League of Legends.",
+            "action": {
+                "type": "folder-content",
+                "path": "%LocalAppData%\\Riot Games\\League of Legends\\Logs"
+            }
+        },
+        {
+            "name": "Logs do Epic Games Launcher",
+            "description": "Limpa os logs antigos do Epic Games Launcher.",
+            "action": {
+                "type": "folder-content",
+                "path": "%LocalAppData%\\EpicGamesLauncher\\Saved\\Logs"
+            }
+        }
+    ],
+    "Spotify": [
+        {
+            "name": "Limpar cache",
+            "description": "Limpa a cache do Spotify. Isto não apaga downloads.",
+            "action": {
+                "type": "folder-content",
+                "path": "%LocalAppData%\\Spotify\\Storage"
+            },
+            "requiredProcesses": [
+                {
+                    "name": "spotify.exe",
+                    "canTerminate": false
+                }
+            ]
+        }
+    ]
+}

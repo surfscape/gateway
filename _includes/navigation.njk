@@ -1,0 +1,57 @@
+<header id="app-header">
+    <a class="header__title" href="/" aria-label="Go to home" title="Go to home">
+        <img src="/public/surfscape_gateway_logo.svg" alt="" aria-hidden="true" width="192">
+    </a>
+
+    {% set allNavItems = collections.all | eleventyNavigation %}
+
+    {% set mainCategories = [] %}
+    {% for item in allNavItems %}
+        {% if item.data.eleventyNavigation.collection == "main" %}
+            {% set mainCategories = mainCategories.concat([item]) %}
+        {% endif %}
+    {% endfor %}
+
+    {% if mainCategories.length > 0 %}
+        <nav class="steel-nav" aria-label="Main navigation">
+            {% for item in mainCategories %}
+                {% set isActive = (item.url == page.url)or(item.url != "/" and page.url.startsWith(item.url)) %}
+                <a class="steel-nav__link" 
+               href="{{ item.url | url }}" 
+               {% if isActive %}aria-current="page"{% endif %}>
+                    {{ item.key }}
+                </a>
+            {% endfor %}
+        </nav>
+    {% endif %}
+
+    {% set activeMainCategory = null %}
+    {% for category in mainCategories %}
+        {% if (category.url == page.url) 
+            or(category.url != "/" and page.url.startsWith(category.url)) %}
+            {% set activeMainCategory = category %}
+        {% endif %}
+    {% endfor %}
+
+    {% if activeMainCategory %}
+        {% set subNavLinks = collections.all | eleventyNavigation(activeMainCategory.key) %}
+        {% if subNavLinks.length > 0 %}
+            <nav class="steel-subnav" aria-label="Sub-navigation for {{ activeMainCategory.key }}">
+
+                <a class="steel-subnav__link" 
+                   href="{{ activeMainCategory.url | url }}"
+                   {% if page.url == activeMainCategory.url %}aria-current="page"{% endif %}>
+                    {{ activeMainCategory.data.navigation.subnav.label or "Overview" }}
+                </a>
+
+                {% for subItem in subNavLinks %}
+                    <a class="steel-subnav__link" 
+                       href="{{ subItem.url | url }}"
+                       {% if subItem.url == page.url %}aria-current="page"{% endif %}>
+                        {{ subItem.title or subItem.key }}
+                    </a>
+                {% endfor %}
+            </nav>
+        {% endif %}
+    {% endif %}
+</header>
