@@ -1,9 +1,10 @@
-# SurfScape Web Services
-> Main channel that hosts and offers services troughout SurfScape projects
+# SurfScape Gateway
+> SurfScape Web Services
 
-The portal can be access in [surfscape.github.io/services](https://surfscape.github.io/services)
+This repository is responsible to host the website to SurfScape Gateway (AKA SurfScape Web Services) where we host various data files that are distrubed to various SurfScape projects. These include update data, signatures, and other data normally in .JSON format.
 
-## Currently hosting
+The portal can be access in [surfscape.github.io/gateway](https://surfscape.github.io/gateway)
 
-- **Celer Signatures** - signatures in .JSON format for the cleaning engine in the Celer toolbox
-- **SurfScape Gateway** - SurfScape app update scheme
+## Currently serving
+
+- **Celer Signatures** - the public signatures that power the Celer cleaning engine
