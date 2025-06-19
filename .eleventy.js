@@ -7,6 +7,7 @@ import { DateTime } from "luxon";
 import pluginIcons from 'eleventy-plugin-icons';
 import logToConsole from 'eleventy-plugin-console-plus'
 import filters from "./_config/filters.js";
+import { HtmlBasePlugin } from "@11ty/eleventy";
 
 export default async function (eleventyConfig) {
   eleventyConfig.addPlugin(eleventyNavigationPlugin);
@@ -21,6 +22,7 @@ export default async function (eleventyConfig) {
   eleventyConfig.addLayoutAlias("base", "base.njk");
   eleventyConfig.addLayoutAlias("page", "page.njk");
   eleventyConfig.addPlugin(logToConsole);
+  eleventyConfig.addPlugin(HtmlBasePlugin);
 
   /* filters */
   Object.keys(filters).forEach((filterName) => {
@@ -62,6 +64,7 @@ export default async function (eleventyConfig) {
 }
 
 export const config = {
+  pathPrefix: "/gateway/",
   templateFormats: [
     "md",
     "njk",
