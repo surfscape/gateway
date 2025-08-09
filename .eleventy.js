@@ -64,7 +64,6 @@ export default async function (eleventyConfig) {
 }
 
 export const config = {
-  pathPrefix: "/gateway/",
   templateFormats: [
     "md",
     "njk",
