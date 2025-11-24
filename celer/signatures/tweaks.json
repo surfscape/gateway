@@ -1,0 +1,56 @@
+[
+    {
+        "name": "Serviços de Telemetria",
+        "description": "Captura e envia dados de utilização à Microsoft. Pode ser parcialmente desativado em edições Home ou Pro.",
+        "actions": {
+            "services": [
+                {
+                    "name": "DiagTrack",
+                    "task": "disable"
+                },
+                {
+                    "name": "dmwappushservice",
+                    "task": "disable"
+                }
+            ],
+            "registry": [
+                {
+                    "path": "HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\DataCollection",
+                    "name": "AllowTelemetry",
+                    "type": "DWORD",
+                    "value": 0
+                }
+            ]
+        }
+    },
+    {
+        "name": "Serviços de Impressão",
+        "description": "Permite a utilização de impressoras no sistema (isto inclui a linha de espera de impressão e utilização de impressoras em redes). Recomendado desligar se não utiliza nenhuma impressora.",
+        "actions": {
+            "services": [
+                {
+                    "name": "PrintSpooler",
+                    "task": "disable"
+                }
+            ]
+        }
+    },
+    {
+        "name": "Microsoft Edge",
+        "description": "Inclui o navegador Microsoft Edge e os seus serviços (como o de instalação &amp; atualização, e inicialização rápida).",
+        "actions": {
+            "powershell": [
+                "Get-AppxPackage *Microsoft.MicrosoftEdge.Stable* | Remove-AppxPackage"
+            ]
+        }
+    },
+    {
+        "name": "Microsoft Store",
+        "description": "Remove a Microsoft Store e outras aplicação UWP. No Windows Enterprise esta opção irá realizar a instalação do Winget e da Microsoft Store com o menor número de dependências possível.",
+        "actions": {
+            "powershell": [
+                "Get-AppxPackage *Microsoft.WindowsStore* | Remove-AppxPackage"
+            ]
+        }
+    }
+]
