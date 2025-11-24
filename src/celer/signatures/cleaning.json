@@ -91,22 +91,8 @@
             ]
         },
         {
-            "name": "Cache do Firefox",
-            "description": "Limpa a cache do Mozilla Firefox.",
-            "action": {
-                "type": "folder-content",
-                "path": "%AppData%\\Mozilla\\Firefox\\Profiles"
-            },
-            "requiredProcesses": [
-                {
-                    "name": "firefox.exe",
-                    "canTerminate": false
-                }
-            ]
-        },
-        {
-            "name": "Cache do Edge",
-            "description": "Limpa a cache do Microsoft Edge.",
+            "name": "Edge Cache",
+            "description": "Cleans the Microsoft Edge cache.",
             "action": {
                 "type": "folder-content",
                 "path": "%LocalAppData%\\Microsoft\\Edge\\User Data\\Default\\Cache"
